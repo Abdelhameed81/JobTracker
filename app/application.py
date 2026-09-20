@@ -1,4 +1,5 @@
 from app.candidate import Candidate
+from app.exceptions import InvalidStatusTransitionError
 from app.job import Job
 from app.application_status import ApplicationStatus
 
@@ -24,3 +25,10 @@ class Application:
 
     def get_status(self) -> ApplicationStatus:
         return self._status
+
+    def change_status(self, new_status: ApplicationStatus) -> ApplicationStatus:
+        if new_status in self.allowed_status_transitions[self._status]:
+            self._status = new_status
+            return self._status
+        else:
+            raise InvalidStatusTransitionError()
