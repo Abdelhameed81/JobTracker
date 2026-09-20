@@ -7,4 +7,7 @@ class Application:
     def __init__(self, candidate: Candidate, job: Job) -> None:
         self.candidate = candidate
         self.job = job
-        self.status:  str = "APPLIED"
+        self._status: str = "APPLIED"
+
+    def get_status(self) -> str:
+        return self._status
