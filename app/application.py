@@ -5,6 +5,18 @@ from app.application_status import ApplicationStatus
 
 class Application:
     """ This class contains the application details """
+
+    allowed_status_transitions = {
+        ApplicationStatus.APPLIED: {ApplicationStatus.UNDER_REVIEW},
+        ApplicationStatus.UNDER_REVIEW: {ApplicationStatus.INTERVIEW_REQUESTED, ApplicationStatus.REJECTED},
+        ApplicationStatus.INTERVIEW_REQUESTED: {ApplicationStatus.INTERVIEW},
+        ApplicationStatus.INTERVIEW: {ApplicationStatus.OFFER, ApplicationStatus.REJECTED},
+        ApplicationStatus.OFFER: {ApplicationStatus.OFFER_ACCEPTED, ApplicationStatus.OFFER_REJECTED},
+        ApplicationStatus.OFFER_ACCEPTED: {ApplicationStatus.CLOSED},
+        ApplicationStatus.OFFER_REJECTED: {ApplicationStatus.CLOSED},
+        ApplicationStatus.REJECTED: {ApplicationStatus.CLOSED}
+    }
+
     def __init__(self, candidate: Candidate, job: Job) -> None:
         self.candidate = candidate
         self.job = job

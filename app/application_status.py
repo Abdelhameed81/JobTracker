@@ -7,4 +7,7 @@ class ApplicationStatus(Enum):
     INTERVIEW_REQUESTED = auto()
     INTERVIEW = auto()
     OFFER = auto()
+    OFFER_ACCEPTED = auto()
+    OFFER_REJECTED = auto()
     REJECTED = auto()
+    CLOSED = auto()
