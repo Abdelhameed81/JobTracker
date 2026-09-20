@@ -1,7 +1,7 @@
 class Candidate:
     """ This class contains the candidate details """
 
-    def __init__(self, name, email, phone, cv):
+    def __init__(self, name: str, email: str, phone: int, cv: str) -> None:
         self.name =  name
         self.email = email
         self.phone = phone
