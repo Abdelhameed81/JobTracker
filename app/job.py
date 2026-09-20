@@ -1,6 +1,6 @@
 class Job:
     """ This class contains the company details """
-    def __init__(self, title, company_name, location, work_arrangement, salary, company_description, responsibilities):
+    def __init__(self, title: str, company_name: str, location: str, work_arrangement: str, salary: str, company_description: str, responsibilities: str):
         self.title = title
         self.company_name = company_name
         self.location = location
