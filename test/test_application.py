@@ -1,5 +1,3 @@
-from test.conftest import job
-
 
 def test_application(application, job, candidate) -> None:
     assert application.job == job
