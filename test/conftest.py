@@ -13,5 +13,5 @@ def candidate() -> Candidate:
     return Candidate("Test candidate name", "Test candidate email", 111111111, "Test candidate CV")
 
 @pytest.fixture
-def application(job, candidate) -> Application:
-    return Application(job, candidate)
+def application(candidate, job) -> Application:
+    return Application(candidate, job)
