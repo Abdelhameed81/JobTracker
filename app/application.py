@@ -15,7 +15,8 @@ class Application:
         ApplicationStatus.OFFER: {ApplicationStatus.OFFER_ACCEPTED, ApplicationStatus.OFFER_REJECTED},
         ApplicationStatus.OFFER_ACCEPTED: {ApplicationStatus.CLOSED},
         ApplicationStatus.OFFER_REJECTED: {ApplicationStatus.CLOSED},
-        ApplicationStatus.REJECTED: {ApplicationStatus.CLOSED}
+        ApplicationStatus.REJECTED: {ApplicationStatus.CLOSED},
+        ApplicationStatus.CLOSED: set()
     }
 
     def __init__(self, candidate: Candidate, job: Job) -> None:
