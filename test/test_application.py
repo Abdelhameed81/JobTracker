@@ -15,3 +15,7 @@ def test_application_can_change_to_valid_status(application) -> None:
 def test_application_rejects_invalid_status_transition(application) -> None:
     with pytest.raises(InvalidStatusTransitionError):
         application.change_status(ApplicationStatus.INTERVIEW)
+
+def test_closed_application_does_not_accept_further_status_change(closed_application) -> None:
+    with pytest.raises(InvalidStatusTransitionError):
+        closed_application.change_status(ApplicationStatus.CLOSED)

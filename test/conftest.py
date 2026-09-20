@@ -2,6 +2,7 @@ import pytest
 from app.job import Job
 from app.candidate import Candidate
 from app.application import Application
+from app.application_status import ApplicationStatus
 
 
 @pytest.fixture
@@ -15,3 +16,10 @@ def candidate() -> Candidate:
 @pytest.fixture
 def application(candidate, job) -> Application:
     return Application(candidate, job)
+
+@pytest.fixture
+def closed_application(application) -> Application:
+    application.change_status(ApplicationStatus.UNDER_REVIEW)
+    application.change_status(ApplicationStatus.REJECTED)
+    application.change_status(ApplicationStatus.CLOSED)
+    return application
