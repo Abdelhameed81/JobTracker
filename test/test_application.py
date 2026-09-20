@@ -16,6 +16,7 @@ def test_application_rejects_invalid_status_transition(application) -> None:
     with pytest.raises(InvalidStatusTransitionError):
         application.change_status(ApplicationStatus.INTERVIEW)
 
-def test_closed_application_does_not_accept_further_status_change(closed_application) -> None:
+@pytest.mark.parametrize("application_status", list(ApplicationStatus))
+def test_closed_application_does_not_accept_further_status_change(closed_application, application_status) -> None:
     with pytest.raises(InvalidStatusTransitionError):
-        closed_application.change_status(ApplicationStatus.CLOSED)
+        closed_application.change_status(application_status)
