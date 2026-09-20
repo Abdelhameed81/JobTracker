@@ -1,10 +1,3 @@
-from sys import exception
-
-
-class Exceptions(exception):
+class InvalidStatusTransitionError(Exception):
     pass
-
-class InvalidStatusTransitionError(Exceptions):
-    def __init__(self) -> None:
-        pass
 
