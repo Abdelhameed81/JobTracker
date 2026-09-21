@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from app.candidate import Candidate
 from app.exceptions import InvalidStatusTransitionError
 from app.job import Job
@@ -23,6 +24,7 @@ class Application:
         self.candidate = candidate
         self.job = job
         self._status: ApplicationStatus = ApplicationStatus.APPLIED
+        self._applied_at = datetime.now(timezone.utc)
 
     def get_status(self) -> ApplicationStatus:
         return self._status
@@ -33,3 +35,7 @@ class Application:
             return self._status
         else:
             raise InvalidStatusTransitionError()
+
+    @property
+    def applied_at(self) -> datetime:
+        return self._applied_at

@@ -1,3 +1,4 @@
+from datetime import timezone, datetime
 import pytest
 from app.application_status import ApplicationStatus
 from app.exceptions import InvalidStatusTransitionError
@@ -20,3 +21,13 @@ def test_application_rejects_invalid_status_transition(application) -> None:
 def test_closed_application_does_not_accept_further_status_change(closed_application, application_status) -> None:
     with pytest.raises(InvalidStatusTransitionError):
         closed_application.change_status(application_status)
+
+def test_applied_at_is_datetime(application) -> None:
+    assert isinstance(application.applied_at, datetime)
+
+def test_applied_at_is_actually_utc(application) -> None:
+    assert application.applied_at.tzinfo == timezone.utc
+
+def test_applied_at_is_read_only(application) -> None:
+    with pytest.raises(AttributeError):
+        application.applied_at = datetime(1970, 1, 1)
