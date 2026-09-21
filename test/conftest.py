@@ -1,4 +1,6 @@
 import pytest
+
+from app.email import Email
 from app.job import Job
 from app.candidate import Candidate
 from app.application import Application
@@ -23,3 +25,7 @@ def closed_application(application) -> Application:
     application.change_status(ApplicationStatus.REJECTED)
     application.change_status(ApplicationStatus.CLOSED)
     return application
+
+@pytest.fixture
+def email() -> Email:
+    return Email("test@email.com")
