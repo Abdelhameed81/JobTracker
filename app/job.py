@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 @dataclass
 class Job:
-    """ This class contains the company details """
+    """ This class contains the job details """
     title: str
     company_name: str
     location: str
