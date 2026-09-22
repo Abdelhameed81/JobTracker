@@ -33,8 +33,7 @@ class Application:
         if new_status in self.allowed_status_transitions[self._status]:
             self._status = new_status
             return self._status
-        else:
-            raise InvalidStatusTransitionError()
+        raise InvalidStatusTransitionError()
 
     @property
     def applied_at(self) -> datetime:
